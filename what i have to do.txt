@@ -1,0 +1,110 @@
+college-exam-system/
+├── models/
+│   ├── Student.js
+│   ├── Exam.js
+│   ├── Admin.js
+│   └── Payment.js
+├── routes/
+│   ├── studentAuth.js
+│   ├── examRegistration.js
+│   ├── admin.js
+│   └── student.js
+├── middleware/
+│   ├── auth.js
+│   └── upload.js
+├── utils/
+│   ├── emailService.js
+│   └── paymentService.js
+├── uploads/
+│   └── students/
+├── public/
+│   ├── css/
+│   ├── js/
+│   └── images/
+├── views/
+│   ├── student/
+│   ├── admin/
+│   └── partials/
+├── .env
+└── app.js
+
+
+
+
+Day 1: Setup & Basic Server
+✅ Initialize project
+✅ Install dependencies  
+✅ Create Express server
+✅ Connect MongoDB
+
+Day 2: Database Models (4 Models)
+✅ Student model
+✅ Exam model  
+✅ Admin model
+✅ Payment model
+
+Day 3: Authentication System
+✅ JWT middleware
+✅ Student register/login
+✅ Admin login
+✅ Password hashing
+
+Day 4: Core API Routes
+✅ Student routes
+✅ Exam routes  
+✅ Admin routes
+
+Day 5: Exam Registration Flow
+✅ List available exams
+✅ Register for exams
+✅ Registration validation
+
+Day 6: Payment Integration  
+✅ Razorpay setup
+✅ Create payment orders
+✅ Payment verification
+
+Day 7: Admin Panel APIs
+✅ Create/manage exams
+✅ View registrations
+✅ Generate reports
+
+Day 8: Email & File Handling
+✅ Send confirmation emails
+✅ Student photo upload
+✅ Hall ticket generation
+
+Day 9: Frontend Setup
+✅ React/Vanilla JS setup
+✅ Basic components
+✅ Routing
+
+Day 10: Student Dashboard
+✅ Login/register pages
+✅ Dashboard layout
+✅ Exam listing
+
+Day 11: Admin Dashboard  
+✅ Admin login
+✅ Exam management
+✅ Registration views
+
+Day 12: UI/UX Polish
+✅ Styling & responsive design
+✅ Error handling
+✅ Loading states
+
+Day 13: Testing
+✅ Test all student flows
+✅ Test admin functionalities  
+✅ Fix bugs
+
+Day 14: Security & Optimization
+✅ Input validation
+✅ Error handling
+✅ Performance
+
+Day 15: Deployment
+✅ Environment setup
+✅ Deploy backend
+✅ Deploy frontend
