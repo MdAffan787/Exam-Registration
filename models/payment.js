@@ -6,16 +6,16 @@ const exam = require("./exam");
 const paymentSchema=mongoose.Schema({
 
    
-   student:{
+   student:
+   [{
     type:mongoose.Schema.Types.ObjectId,
     ref:student,
 
-   },
-   exam:{
+   }],
+   exam:[{
     type:mongoose.Schema.Types.ObjectId,
     ref:exam,
-
-   },
+   }],
     amount:Number,
 recipt:String,
 status:{
