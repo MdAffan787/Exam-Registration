@@ -8,7 +8,7 @@ const studentModel=require("../models/student");
 module.exports.paySuccess=async (req,res)=>{
   
       let student=await studentModel.findById(req.params.studentId);
-      let exam=await student.exam({examId:req.params.examId})
+      let exam =await examModel.findOne({examId:req.params.examId})
       
           if (!exam || !student) {
       req.flash("error", "Exam or Student not found!");
@@ -29,7 +29,7 @@ try{
 
 
       exam.students.push(student._id);
-      student.exam.push(exam._id);
+      student.exams.push(exam._id);
       student.payment.push(payment._id);
       await exam.save();
     await student.save();
