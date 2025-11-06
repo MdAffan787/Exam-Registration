@@ -1,0 +1,539 @@
+/* ===== RESET AND BASE STYLES ===== */
+
+/* Reset default browser styles to ensure consistency across different browsers */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Includes padding and border in element's total width/height */
+}
+
+/* Set base styles for the entire document */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font stack */
+    line-height: 1.6; /* Improve readability with better line spacing */
+    color: #333; /* Dark gray text color for good contrast */
+    background-color: #f4f4f4; /* Light gray background */
+    min-height: 100vh; /* Ensure body takes at least full viewport height */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack children vertically */
+}
+/* ===== ALERT SYSTEM STYLES ===== */
+.alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1.2rem 1.5rem;
+    margin: 0;
+    border-radius: 12px;
+    font-weight: 600;
+    text-align: left;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    animation: slideInRight 0.5s ease-out, fadeOut 0.5s ease-in 4.5s forwards;
+    max-width: 400px;
+    z-index: 1000;
+    border: none;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    line-height: 1.4;
+}
+
+/* Success Alert */
+.alert.success {
+    background: linear-gradient(135deg, #d4edda, #c3e6cb);
+    color: #155724;
+    border-left: 4px solid #28a745;
+}
+
+.alert.success::before {
+    content: "✓";
+    font-size: 1.3rem;
+    font-weight: bold;
+    background: #28a745;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Error Alert */
+.alert.error {
+    background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+    color: #721c24;
+    border-left: 4px solid #dc3545;
+}
+
+.alert.error::before {
+    content: "!";
+    font-size: 1.3rem;
+    font-weight: bold;
+    background: #dc3545;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Info Alert (optional) */
+.alert.info {
+    background: linear-gradient(135deg, #d1ecf1, #bee5eb);
+    color: #0c5460;
+    border-left: 4px solid #17a2b8;
+}
+
+.alert.info::before {
+    content: "i";
+    font-style: italic;
+    font-size: 1.3rem;
+    font-weight: bold;
+    background: #17a2b8;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Warning Alert (optional) */
+.alert.warning {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+    color: #856404;
+    border-left: 4px solid #ffc107;
+}
+
+.alert.warning::before {
+    content: "⚠";
+    font-size: 1.3rem;
+    background: #ffc107;
+    color: #856404;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translateX(100%) scale(0.9);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* ===== INTERACTIVE FEATURES ===== */
+.alert:hover {
+    animation-play-state: paused;
+    transform: translateX(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.alert:active {
+    transform: translateX(0) scale(0.98);
+}
+
+/* Close button for alerts */
+.alert .close-btn {
+    margin-left: auto;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 0.7;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.alert .close-btn:hover {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.success .close-btn {
+    color: #155724;
+}
+
+.error .close-btn {
+    color: #721c24;
+}
+
+.info .close-btn {
+    color: #0c5460;
+}
+
+.warning .close-btn {
+    color: #856404;
+}
+
+/* ===== STACKING MULTIPLE ALERTS ===== */
+.alert:nth-child(1) { top: 20px; }
+.alert:nth-child(2) { top: 100px; }
+.alert:nth-child(3) { top: 180px; }
+.alert:nth-child(4) { top: 260px; }
+
+/* ===== PROGRESS BAR (Optional) ===== */
+.alert.with-progress::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: currentColor;
+    opacity: 0.5;
+    animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+    from { width: 100%; }
+    to { width: 0%; }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .alert {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+        animation: slideInDown 0.5s ease-out, fadeOutUp 0.5s ease-in 4.5s forwards;
+    }
+    
+    @keyframes slideInDown {
+        from {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes fadeOutUp {
+        to {
+            opacity: 0;
+            transform: translateY(-100%) scale(0.9);
+        }
+    }
+    
+    /* Reset stacking on mobile */
+    .alert:nth-child(1),
+    .alert:nth-child(2),
+    .alert:nth-child(3),
+    .alert:nth-child(4) {
+        top: 10px;
+    }
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+    .alert {
+        animation: none;
+    }
+}
+
+.alert:focus {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+
+/* ===== DARK MODE SUPPORT ===== */
+@media (prefers-color-scheme: dark) {
+    .alert.success {
+        background: linear-gradient(135deg, #0f5132, #146c43);
+        color: #d1e7dd;
+    }
+    
+    .alert.error {
+        background: linear-gradient(135deg, #842029, #a71e2a);
+        color: #f8d7da;
+    }
+    
+    .alert.info {
+        background: linear-gradient(135deg, #055160, #087990);
+        color: #cff4fc;
+    }
+    
+    .alert.warning {
+        background: linear-gradient(135deg, #664d03, #997404);
+        color: #fff3cd;
+    }
+}
+
+/* ===== HEADER STYLES ===== */
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Purple gradient background */
+    color: white; /* White text color */
+    padding: 1rem 2rem; /* Padding: 1rem top/bottom, 2rem left/right */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+header h1 {
+    font-size: 2rem; /* Large heading size */
+    margin-bottom: 0.5rem; /* Space below heading */
+    text-align: center; /* Center align the heading */
+}
+
+/* Navigation styles */
+nav {
+    display: flex; /* Use flexbox for navigation links */
+    justify-content: center; /* Center navigation links */
+    gap: 2rem; /* Space between navigation items */
+    margin-top: 1rem; /* Space above navigation */
+}
+
+nav a {
+    color: white; /* White link color */
+    text-decoration: none; /* Remove underline from links */
+    padding: 0.5rem 1rem; /* Padding around links */
+    border-radius: 5px; /* Rounded corners */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    font-weight: 500; /* Medium font weight */
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white on hover */
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+
+/* ===== MAIN CONTENT STYLES ===== */
+main {
+    flex: 1; /* Take up remaining vertical space */
+    padding: 2rem; /* Padding around main content */
+    max-width: 1200px; /* Maximum width for large screens */
+    margin: 0 auto; /* Center main content */
+    width: 100%; /* Full width within constraints */
+}
+
+/* Container for the form */
+.create {
+    background: white; /* White background for form container */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    padding: 2rem; /* Padding inside form container */
+}
+
+/* ===== FORM SECTION STYLES ===== */
+
+/* Style for each form section (Basic, Academics, Profile) */
+section {
+    margin-bottom: 2rem; /* Space between sections */
+    padding: 1.5rem; /* Padding inside sections */
+    border: 1px solid #e0e0e0; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    background: #fafafa; /* Very light gray background */
+}
+
+/* Section heading styles */
+section h1 {
+    color: #667eea; /* Purple color matching header */
+    margin-bottom: 1rem; /* Space below heading */
+    padding-bottom: 0.5rem; /* Padding below heading */
+    border-bottom: 2px solid #e0e0e0; /* Bottom border for separation */
+    font-size: 1.3rem; /* Slightly larger font size */
+}
+
+/* ===== FORM ELEMENT STYLES ===== */
+
+/* Label styles */
+label {
+    display: block; /* Make labels block elements */
+    margin-bottom: 0.5rem; /* Space below labels */
+    font-weight: 500; /* Medium font weight */
+    color: #555; /* Medium gray color */
+    margin-top: 1rem; /* Space above labels */
+}
+
+/* First label in each section shouldn't have top margin */
+section label:first-of-type {
+    margin-top: 0;
+}
+
+/* Input field styles */
+input[type="text"],
+input[type="date"],
+input[type="tel"],
+input[type="email"],
+input[type="password"],
+input[type="number"] {
+    width: 100%; /* Full width inputs */
+    padding: 0.75rem; /* Comfortable padding */
+    border: 2px solid #ddd; /* Light gray border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1rem; /* Standard font size */
+    transition: all 0.3s ease; /* Smooth transitions */
+    background-color: white; /* White background */
+}
+
+/* Focus state for input fields */
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="tel"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus {
+    outline: none; /* Remove default outline */
+    border-color: #667eea; /* Purple border on focus */
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); /* Purple glow effect */
+}
+
+/* ===== SUBMIT BUTTON STYLES ===== */
+input[type="submit"] {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Purple gradient */
+    color: white; /* White text */
+    padding: 1rem 2rem; /* Comfortable padding */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1.1rem; /* Slightly larger font */
+    font-weight: 600; /* Bold text */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transitions */
+    display: block; /* Block display */
+    width: 200px; /* Fixed width */
+    margin: 2rem auto 0; /* Center with top margin */
+    text-transform: uppercase; /* Uppercase text */
+    letter-spacing: 1px; /* Spaced letters for better readability */
+}
+
+/* Hover state for submit button */
+input[type="submit"]:hover {
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4); /* Enhanced shadow */
+}
+
+/* Active state for submit button */
+input[type="submit"]:active {
+    transform: translateY(0); /* Reset lift when clicked */
+}
+
+/* ===== NESTED SECTION STYLES ===== */
+
+/* Style for address section nested inside profile */
+.address {
+    background: #f0f0f0; /* Slightly darker background */
+    border: 1px solid #ddd; /* Light border */
+    margin-top: 1rem; /* Space above address section */
+}
+
+/* ===== FOOTER STYLES ===== */
+footer {
+    background: #333; /* Dark background */
+    color: white; /* White text */
+    text-align: center; /* Center aligned text */
+    padding: 1rem; /* Padding */
+    margin-top: auto; /* Push footer to bottom */
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablet styles (screens up to 768px wide) */
+@media (max-width: 768px) {
+    main {
+        padding: 1rem; /* Reduced padding on smaller screens */
+    }
+    
+    .create {
+        padding: 1rem; /* Reduced padding */
+    }
+    
+    header h1 {
+        font-size: 1.5rem; /* Smaller heading */
+    }
+    
+    nav {
+        flex-direction: column; /* Stack navigation vertically */
+        gap: 0.5rem; /* Reduced gap */
+    }
+    
+    input[type="submit"] {
+        width: 100%; /* Full width button on mobile */
+    }
+}
+
+/* Mobile styles (screens up to 480px wide) */
+@media (max-width: 480px) {
+    section {
+        padding: 1rem; /* Reduced padding */
+    }
+    
+    header {
+        padding: 1rem; /* Reduced padding */
+    }
+    
+    nav a {
+        padding: 0.5rem; /* Adjusted padding */
+        text-align: center; /* Center align text */
+    }
+}
+
+/* ===== ACCESSIBILITY ENHANCEMENTS ===== */
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    section {
+        border-color: #000; /* Black borders for high contrast */
+    }
+    
+    input:focus {
+        border-color: #000; /* Black focus borders */
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important; /* Remove transitions */
+    }
+}

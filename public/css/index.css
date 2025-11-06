@@ -1,0 +1,100 @@
+/* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Header */
+header {
+  background-color: #0056b3;
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #ffeb3b;
+}
+
+/* Main section */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.student, .admin {
+  background: white;
+  padding: 1.5rem 2.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.student:hover, .admin:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.student a, .admin a {
+  text-decoration: none;
+  color: #0056b3;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.student a:hover, .admin a:hover {
+  color: #003d80;
+}
+
+/* Footer */
+footer {
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+  nav a {
+    display: inline-block;
+    margin: 10px;
+  }
+  .student, .admin {
+    width: 80%;
+  }
+}

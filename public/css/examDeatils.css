@@ -1,0 +1,337 @@
+/* adminHome.css */
+
+/* ===== RESET AND BASE STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+/* ===== ALERT STYLES ===== */
+.alert {
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.alert.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* ===== HEADER STYLES ===== */
+header {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    color: #2c3e50;
+    font-size: 28px;
+}
+
+/* ===== NAVIGATION STYLES ===== */
+nav a {
+    background: #e74c3c;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+nav a:hover {
+    background: #c0392b;
+}
+
+/* ===== MAIN CONTENT STYLES ===== */
+main {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+main h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* ===== TABLE STYLES ===== */
+.subjects {
+    margin: 30px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+thead {
+    background: #3498db;
+    color: white;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ===== PAYMENT BUTTON STYLES ===== */
+a[href*="/payment"] {
+    display: inline-block;
+    background: #27ae60;
+    color: white;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 20px;
+    transition: background 0.3s;
+}
+
+a[href*="/payment"]:hover {
+    background: #219652;
+}
+
+/* ===== FOOTER STYLES ===== */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    color: #7f8c8d;
+    border-top: 1px solid #ddd;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    th, td {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    main {
+        padding: 20px;
+    }
+}/* adminHome.css */
+
+/* ===== RESET AND BASE STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+/* ===== ALERT STYLES ===== */
+.alert {
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.alert.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* ===== HEADER STYLES ===== */
+header {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    color: #2c3e50;
+    font-size: 28px;
+}
+
+/* ===== NAVIGATION STYLES ===== */
+nav a {
+    background: #e74c3c;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+nav a:hover {
+    background: #c0392b;
+}
+
+/* ===== MAIN CONTENT STYLES ===== */
+main {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+main h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* ===== TABLE STYLES ===== */
+.subjects {
+    margin: 30px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+thead {
+    background: #3498db;
+    color: white;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ===== PAYMENT BUTTON STYLES ===== */
+a[href*="/payment"] {
+    display: inline-block;
+    background: #27ae60;
+    color: white;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 20px;
+    transition: background 0.3s;
+}
+
+a[href*="/payment"]:hover {
+    background: #219652;
+}
+
+/* ===== FOOTER STYLES ===== */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    color: #7f8c8d;
+    border-top: 1px solid #ddd;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    th, td {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    main {
+        padding: 20px;
+    }
+}

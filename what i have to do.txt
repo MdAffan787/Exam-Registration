@@ -108,3 +108,9 @@ Day 15: Deployment
 ✅ Environment setup
 ✅ Deploy backend
 ✅ Deploy frontend
+
+
+
+
+
+name,fatherName,dateOfBirth, Phone,email, password:hash, usnNumber, semester,branch,image,  address, Aadhar,

@@ -1,6 +1,4 @@
 const mongoose=require("mongoose");
-mongoose.connect(`mongodb://127.0.0.1:27017/testapp1`);
-
 const studentSchema=mongoose.Schema({
 
     //basic
@@ -8,7 +6,7 @@ const studentSchema=mongoose.Schema({
     fatherName:String,
     dateOfBirth:Date,
     
-    Phone:Number,
+    phone:Number,
     email:
     {type:String,
         unique: true,
@@ -22,7 +20,11 @@ const studentSchema=mongoose.Schema({
         type:Number,
         min:1,
         max:8,},
-    branch:String,
+   branch: {
+    type: String,
+    enum: ["cse", "ece", "eee", "me", "ce", "aiml", "ise"],
+    required: true,
+},
 
 
     //profile
@@ -31,21 +33,23 @@ const studentSchema=mongoose.Schema({
         city:{
             type:String,
             required:true},
-        Dist:{
+        dist:{
             type:String,
             required:true},
         pincode:{
             type:Number,
             required:true},
     },
-
-
-
-    Aadhar:Number,
-    paymant:{
-        type:Mongoose.Schema.Type.ObjectId,
-        ref:payment,
-    },
+    aadhar:Number,
+    payment:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"payment",
+    }],
+    exams:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"exam",
+        unique: true,
+    }],
     date:{
         type:Date,
         default:Date.now

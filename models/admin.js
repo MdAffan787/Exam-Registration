@@ -5,7 +5,7 @@ const adminSchema=mongoose.Schema({
 
    
     name:String,
-    mobile:Number,
+    phone:Number,
     email:
     {type:String,
         unique: true,
@@ -24,9 +24,4 @@ const adminSchema=mongoose.Schema({
     },
 
 })
-
-
-
-
-
 module.exports=mongoose.model("admin",adminSchema);

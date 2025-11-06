@@ -9,12 +9,12 @@ const paymentSchema=mongoose.Schema({
    student:
    [{
     type:mongoose.Schema.Types.ObjectId,
-    ref:student,
+    ref:"student",
 
    }],
    exam:[{
     type:mongoose.Schema.Types.ObjectId,
-    ref:exam,
+    ref:"exam",
    }],
     amount:Number,
 recipt:String,

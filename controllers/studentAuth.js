@@ -1,75 +1,88 @@
 
 const bcrypt=require('bcrypt');
 const studentModel=require("../models/student")
-const {genrateToken}=require("../utils/genrateToken")
+const {generateToken}=require("../utils/generateToken")
 const jwt=require("jsonwebtoken")
+const examModel=require('../models/exam');
+const isLoggin=require('../midleware/isLoggin')
+const upload=require("../config/multer");
 
-
-module.exports.createStudent=async function(req,res){
-    let{name,fatherName,dateOfBirth,Phone,email,password,usnNumber,semester,branch,image,address,Aadhar}=req.body;
+module.exports.createStudent=[upload.single("image"),async function(req,res){
+    let{name,fatherName,dateOfBirth,phone,email,password,usnNumber,semester,branch,image,address,aadhar}=req.body;
+   
     try{
-        let student=studentModel.findOne({email});
+        let student=await studentModel.findOne({email});
         if(!student)
         {
             let salt=await bcrypt.genSalt(10);
-            let hash=await bcrypt.hash(password,hash);
+            let hash=await bcrypt.hash(password,salt);
            let student=await studentModel.create({
                 name,
                 fatherName,
                 dateOfBirth,
-                Phone,
+                phone,
                 email,
                 password:hash,
                 usnNumber,
                 semester,
                 branch,
-                image,
-                address,
-                Aadhar,
+                image: req.file.filename,
+                address:{
+                    dist:address.dist,
+                    city:address.city,
+                    pincode:address.pincode,
+                },
+                aadhar,
             });
-            let token=genrateToken(student);
+            let token=generateToken(student);
              res.cookie("token",token);
-        res.status(201).send("Student registered successfully");
+              res.redirect("/student/home");
+            
         }
         else{
-                res.send("You already registerd!");
+               req.flash("success","You already registerd!");
+               res.redirect("/student/login")
             }
     }
     catch(err){
-        console.log(err.massage);
-        res.redirect('/');
+        console.log(err.message);
+        res.redirect('/student');
     }
 
-}
+}];
 module.exports.loginStudent=async function(req,res){
     let{email,password}=req.body;
     try{
-        student=await studentModel.findOne({email});
-        if(!student)return res.send("email or password incorrect.");
+        let student=await studentModel.findOne({email});
+        if(!student){
+            req.flash("error","email or password is incorrect");
+            return res.redirect("/student");
+        }
         
-            bcrypt.compare(password,student.password,function(err,result)
+            bcrypt.compare(password,student.password,async function(err,result)
         {
             if(result)
             {
-                let token=genrateToken(student);
+                let token=generateToken(student);
                 res.cookie("token",token);
-                res.send("Your logined.");
+              
+             res.redirect("/student/home");
             }
             else
             {
-               res.send("email or password incorrect.");
+               req.flash("error","email or password incorrect.");
+               res.redirect("/student");
             }
         })
         
     }
     catch(err){
-        console.log(err.massage);
-       res.redirect('/');
+        console.log(err.message);
+       res.redirect('/student');
     }
 }
-module.exports.logout=function(){
-    res.cookie("token","");
-     res.redirect('/');
-
-
+module.exports.logout= function(req,res)
+{
+res.clearCookie("token");
+res.redirect('/');
 }

@@ -1,0 +1,446 @@
+/* === General Reset === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+body {
+  background-color: #f4f6fb;
+  color: #333;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+/* ===== ALERT SYSTEM STYLES ===== */
+.alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1.2rem 1.5rem;
+    margin: 0;
+    border-radius: 12px;
+    font-weight: 600;
+    text-align: left;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    animation: slideInRight 0.5s ease-out, fadeOut 0.5s ease-in 4.5s forwards;
+    max-width: 400px;
+    z-index: 1000;
+    border: none;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    line-height: 1.4;
+}
+
+/* Success Alert */
+.alert.success {
+    background: linear-gradient(135deg, #d4edda, #c3e6cb);
+    color: #155724;
+    border-left: 4px solid #28a745;
+}
+
+.alert.success::before {
+    content: "✓";
+    font-size: 1.3rem;
+    font-weight: bold;
+    background: #28a745;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Error Alert */
+.alert.error {
+    background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+    color: #721c24;
+    border-left: 4px solid #dc3545;
+}
+
+.alert.error::before {
+    content: "!";
+    font-size: 1.3rem;
+    font-weight: bold;
+    background: #dc3545;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Info Alert (optional) */
+.alert.info {
+    background: linear-gradient(135deg, #d1ecf1, #bee5eb);
+    color: #0c5460;
+    border-left: 4px solid #17a2b8;
+}
+
+.alert.info::before {
+    content: "i";
+    font-style: italic;
+    font-size: 1.3rem;
+    font-weight: bold;
+    background: #17a2b8;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Warning Alert (optional) */
+.alert.warning {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+    color: #856404;
+    border-left: 4px solid #ffc107;
+}
+
+.alert.warning::before {
+    content: "⚠";
+    font-size: 1.3rem;
+    background: #ffc107;
+    color: #856404;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translateX(100%) scale(0.9);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* ===== INTERACTIVE FEATURES ===== */
+.alert:hover {
+    animation-play-state: paused;
+    transform: translateX(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.alert:active {
+    transform: translateX(0) scale(0.98);
+}
+
+/* Close button for alerts */
+.alert .close-btn {
+    margin-left: auto;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 0.7;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.alert .close-btn:hover {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.success .close-btn {
+    color: #155724;
+}
+
+.error .close-btn {
+    color: #721c24;
+}
+
+.info .close-btn {
+    color: #0c5460;
+}
+
+.warning .close-btn {
+    color: #856404;
+}
+
+/* ===== STACKING MULTIPLE ALERTS ===== */
+.alert:nth-child(1) { top: 20px; }
+.alert:nth-child(2) { top: 100px; }
+.alert:nth-child(3) { top: 180px; }
+.alert:nth-child(4) { top: 260px; }
+
+/* ===== PROGRESS BAR (Optional) ===== */
+.alert.with-progress::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: currentColor;
+    opacity: 0.5;
+    animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+    from { width: 100%; }
+    to { width: 0%; }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .alert {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+        animation: slideInDown 0.5s ease-out, fadeOutUp 0.5s ease-in 4.5s forwards;
+    }
+    
+    @keyframes slideInDown {
+        from {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes fadeOutUp {
+        to {
+            opacity: 0;
+            transform: translateY(-100%) scale(0.9);
+        }
+    }
+    
+    /* Reset stacking on mobile */
+    .alert:nth-child(1),
+    .alert:nth-child(2),
+    .alert:nth-child(3),
+    .alert:nth-child(4) {
+        top: 10px;
+    }
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+    .alert {
+        animation: none;
+    }
+}
+
+.alert:focus {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+
+/* ===== DARK MODE SUPPORT ===== */
+@media (prefers-color-scheme: dark) {
+    .alert.success {
+        background: linear-gradient(135deg, #0f5132, #146c43);
+        color: #d1e7dd;
+    }
+    
+    .alert.error {
+        background: linear-gradient(135deg, #842029, #a71e2a);
+        color: #f8d7da;
+    }
+    
+    .alert.info {
+        background: linear-gradient(135deg, #055160, #087990);
+        color: #cff4fc;
+    }
+    
+    .alert.warning {
+        background: linear-gradient(135deg, #664d03, #997404);
+        color: #fff3cd;
+    }
+}
+/* === Header === */
+header {
+  background-color: #002b5c; /* UVCE-style blue */
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  font-size: 1.6rem;
+  letter-spacing: 0.5px;
+}
+
+nav a {
+  color: #fff;
+  margin-left: 1.2rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #ffcb05; /* Accent yellow */
+}
+
+/* === Main Section === */
+main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.student h1 {
+  font-size: 1.8rem;
+  color: #002b5c;
+  margin-bottom: 0.5rem;
+}
+
+.student h3 {
+  color: #555;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+/* === Exams Container === */
+.exams {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* === Individual Exam Card === */
+.exam {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.exam:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.exam h1 {
+  color: #002b5c;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.exam h2 {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 0.4rem;
+}
+
+.exam h6 {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+/* === Register Button === */
+.exam a {
+  display: inline-block;
+  background-color: #002b5c;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.exam a:hover {
+  background-color: #ffcb05;
+  color: #002b5c;
+}
+
+/* === No Exams Message === */
+.exams h1,
+.exams h2 {
+  text-align: center;
+  color: #777;
+}
+
+/* === Footer === */
+footer {
+  text-align: center;
+  background-color: #002b5c;
+  color: #fff;
+  padding: 1rem;
+  font-size: 0.9rem;
+  margin-top: auto;
+}
+
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav {
+    margin-top: 0.8rem;
+  }
+
+  nav a {
+    margin: 0 0.6rem;
+  }
+}

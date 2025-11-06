@@ -8,7 +8,7 @@ const examSchema=mongoose.Schema({
         require:true,
         unique: true,
     },
-
+    
     semester:{
         type:Number,
         min:1,
@@ -42,6 +42,13 @@ const examSchema=mongoose.Schema({
         type: Number,
         required: true
     },
+    students:[{
+        type:mongoose.Schema.Types.ObjectId,
+        unique: true,
+                ref:"student",
+                
+
+    }]
    
 })
 

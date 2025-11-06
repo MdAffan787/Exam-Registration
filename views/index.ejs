@@ -1,84 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exam register</title>
-    <link rel="stylesheet" href="/styleSheet/style.css">
-
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Exam Registration</title>
+    <link rel="stylesheet" href="/css/index.css"/>
 </head>
 <body>
-    <header><h1>Content Submission Form</h1>
-   <div>
-    <p>Please fill out the details carefully <br/>you are edit after submition</p>
-   </div>
-   </header>
-   <main>
-    <form action="/create" method="post">
-        
-        <div class="form">
-        
-        <div class="persnal">
-            <h2>persnal details</h2>
-        <label for="name">Full name</label><br>
-        <input type="text" id="name" name="name" placeholder="your answer" class="center"  required ><br><br>
-        <label for="fatherName">father name</label><br>
-        <input type="text" id="fatherName" name="fatherName" placeholder="your answer" required><br><br>
-        <label for="name">date of birth</label><br>
-        <input type="Date" id="dob" name="dob" placeholder="your answer" required><br><br>
-       
-         <label for="email">Email Id</label><br>
-        <input type="email" id="email" name="email" placeholder="your answer" required><br><br>
-        
-         <label for="password">Set password</label> <br>
-         <input type="password" id="password" placeholder="your answer" name="password"><br><br>
-          <label for="tel">phone number</label><br>
-        <input type="tel" id="contact" name="contact" placeholder="your answer" required><br><br>
+    <header>
+        <h1>Well Come to uvce page</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/register">Register</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="student">
+            <a href="/student">for student</a>
 
         </div>
-        <div class="education">
-            <h2>education details</h2> 
-            <label for="USN">Register Number</label><br>
-        <input type="text"id ="USN" name="USN" placeholder="your answer" required><br><br>
-        select your semester
-<select name ="semester" id="semeter">
-    <option value="">select</option>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="6">6</option>
-    <option value="7">7</option>
-    <option value="8">8</option>
-</select><br><br>
-<label for="branch">Branch</label><br>
-<input type="text" id="branch" name="branch"placeholder="your answer"required><br><br>
-</div>
-<div class="verification">
-    <h2>Varification</h2>
-    <label for="image">upload image</label><br>
+        <div class="admin">
+            <a href="/admin">for admin</a>
+            
+        </div>
+    </main>
 
-<input type="file" id="image" name="image" accept="image/*" required><br><br>
+    <footer>
+        <small>&copy; <%= new Date().getFullYear() %> Exam Registration</small>
+    </footer>
 
-    <label for="Aadhar">Aadhar number</label><br>
-    <input type="Number" id="AadharNumber" name="AadharNumber" placeholder="your answer" required><br><br>
-</div>
-<div class="payment">
-    <h2>Payment Section</h2>
-    <label for="amount">Enter Exam Fee</label><br>
-        <input type="Amount" id="amount" name="amount" placeholder="your answer" required><br><br>
-    
-</div>
-<div class="Declaration">
-    <h2>Declaration </h2>
-    I hereby declare that the information provided is true to the best of my knowledge.
-   
-    <input type="Checkbox" id="Declaration" name="Declaration" required><br><br>
-</div>
-<input type="submit" value="submit">
-</div>
-   </form>
-   </main>
+    <script src="/js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Exam Registration</title>
+    <link rel="stylesheet" href="/css/studentCreate.css"/>
+</head>
+<body>
+    <header>
+        <h1>create a new student</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/student">login</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="create">
+            <form action="/student/create" method="post"  enctype="multipart/form-data">
+                <section class="basic">
+                    <h1>Basic Details</h1> 
+                    <label>your name</label>
+                <input type="text" name="name">
+                 <label>father name</label>
+                <input type="text" name="fatherName">
+                <label>your Date of birth</label>
+                <input type="Date" name="dateOfBirth">
+                 <label>your phone number</label>
+                <input type="tel" name="phone">
+                <label>email</label>
+                <input type="email" name="email">
+                <label>set a password</label>
+                <input type="password" name="password">
+
+            </section>
+
+            <section class="acadamics">
+                <h1>acadamics Details</h1>
+                <label>USN Number</label>
+                <input type="text" name="usnNumber">
+                <label>your are in which semester</label>
+                <input type="Number" name="semester">
+                <label>your branch</label>
+                <input type="text" name="branch">
+
+            </section>
+
+            <section class="profile">
+                <h1>Profile</h1>
+                <label>upload your image </label>
+                <input type="file" name="image">
+                <section class="address">
+                    <h1>address</h1>
+                    <label>your districk</label>
+                <input type="text" name="address[dist]">
+                <label>your city</label>
+                <input type="text" name="address[city]">
+                <label>city pincode</label>
+                <input type="Number" name="address[pincode]">
+                <label>Aadhar Number</label>
+                <input type="Number" name="aadhar">
+                </section>
+            </section>
+            <input type="submit" value="create">
+                
+
+
+            </form>
+            
+
+        </div>
+    </main>
+
+    <footer>
+        <small>&copy; <%= new Date().getFullYear() %> Exam Registration</small>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>
